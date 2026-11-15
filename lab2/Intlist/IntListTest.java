@@ -49,6 +49,14 @@ public class IntListTest {
     }
 
     @Test
+    public void testCopyIterative() {
+        IntList L = IntList.of(1, 2, 3);
+        IntList Lcopy = IntList.copyIterative(L);
+        assertEquals(IntList.of(1, 2, 3), L);
+        assertEquals(IntList.of(1, 2, 3), Lcopy);
+    }
+
+    @Test
     public void testDcatenate() {
         IntList A = IntList.of(1, 2, 3);
         IntList B = IntList.of(4, 5, 6);
@@ -63,6 +71,32 @@ public class IntListTest {
         IntList B = IntList.of(4, 5, 6);
         IntList exp = IntList.of(1, 2, 3, 4, 5, 6);
         assertEquals(exp, IntList.catenate(A, B));
+        assertEquals(IntList.of(1, 2, 3), A);
+    }
+
+    @Test
+    public void testCopyRecursive() {
+        IntList L = IntList.of(1, 2, 3);
+        IntList Lcopy = IntList.copyRecursive(L);
+        assertEquals(IntList.of(1, 2, 3), L);
+        assertEquals(IntList.of(1, 2, 3), Lcopy);
+    }
+
+    @Test
+    public void testDcatenateRecursive() {
+        IntList A = IntList.of(1, 2, 3);
+        IntList B = IntList.of(4, 5, 6);
+        IntList exp = IntList.of(1, 2, 3, 4, 5, 6);
+        assertEquals(exp, IntList.dcatenateRecursive(A, B));
+        assertEquals(IntList.of(1, 2, 3, 4, 5, 6), A);
+    }
+
+    @Test
+    public void testCatenateRecursive() {
+        IntList A = IntList.of(1, 2, 3);
+        IntList B = IntList.of(4, 5, 6);
+        IntList exp = IntList.of(1, 2, 3, 4, 5, 6);
+        assertEquals(exp, IntList.catenateRecursive(A, B));
         assertEquals(IntList.of(1, 2, 3), A);
     }
 

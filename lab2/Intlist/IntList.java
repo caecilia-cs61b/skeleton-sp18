@@ -74,6 +74,21 @@ public class IntList {
 
     /** DO NOT MODIFY ANYTHING ABOVE THIS LINE! */
 
+    public static IntList copyIterative(IntList lst) {
+        if (lst == null) {
+            return null;
+        } else {
+            IntList C = new IntList(lst.first, null);
+            IntList p = lst.rest;
+            IntList pC = C;
+            while (p != null) {
+                pC.rest = new IntList(p.first, null);
+                p = p.rest;
+                pC = pC.rest;
+            }
+            return C;
+        }
+    }
 
     /**
      * Returns a list consisting of the elements of A followed by the
@@ -81,8 +96,16 @@ public class IntList {
      */
 
     public static IntList dcatenate(IntList A, IntList B) {
-        //TODO:  fill in method
-        return null;
+        if (A == null) {
+            return copyIterative(B);
+        } else {
+            IntList pA = A;
+            while (pA.rest != null) {
+                pA = pA.rest;
+            }
+            pA.rest = copyIterative(B);
+            return A;
+        }
     }
 
     /**
@@ -90,24 +113,55 @@ public class IntList {
      * * elements of B.  May NOT modify items of A.  Use 'new'.
      */
     public static IntList catenate(IntList A, IntList B) {
-        //TODO:  fill in method
-        return null;
+        if (A == null) {
+            return copyIterative(B);
+        } else {
+            IntList C = new IntList(A.first,null);
+            IntList pA = A.rest;
+            IntList pC = C;
+            while (pA != null) {
+                pC.rest = new IntList(pA.first, null);
+                pA = pA.rest;
+                pC = pC.rest;
+            }
+            pC.rest = copyIterative(B);
+            return C;
+        }
     }
 
+    public static IntList copyRecursive(IntList lst) {
+        if (lst == null) {
+            return null;
+        } else {
+            return new IntList(lst.first, copyRecursive(lst.rest));
+        }
+    }
 
+    /**
+     * Returns a list consisting of the elements of A followed by the
+     * *  elements of B.  May modify items of A. Don't use 'new'.
+     */
 
+    public static IntList dcatenateRecursive(IntList A, IntList B) {
+        if (A.rest == null) {
+            A.rest = copyRecursive(B);
+        } else {
+            dcatenateRecursive(A.rest, B);
+        }
+        return A;
+    }
 
-
-
-
-
-
-
-
-
-
-
-
+    /**
+     * Returns a list consisting of the elements of A followed by the
+     * * elements of B.  May NOT modify items of A.  Use 'new'.
+     */
+    public static IntList catenateRecursive(IntList A, IntList B) {
+        if (A.rest == null) {
+            return new IntList(A.first, copyRecursive(B));
+        } else {
+            return new IntList(A.first, catenateRecursive(A.rest, B));
+        }
+    }
 
     /**
      * DO NOT MODIFY ANYTHING BELOW THIS LINE! Many of the concepts below here
