@@ -9,6 +9,7 @@ public class DebugExercise3 {
             String foodType = in.readString();
             double cost = in.readDouble();
             int numAvailable = in.readInt();
+            // DebugPractice/foods.csv:L89 kroger turnip 0.45 -387128732
             if (foodType.equals("turnip")) {
                 int newTotal = totalTurnips + numAvailable;
                 totalTurnips = newTotal;
