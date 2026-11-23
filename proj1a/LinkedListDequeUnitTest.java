@@ -5,9 +5,6 @@ import org.junit.Test;
 public class LinkedListDequeUnitTest {
     @Test
     public void testLinkedListDeque() {
-        LinkedListDeque<Integer> someTarget = new LinkedListDeque<Integer>(2026);
-        assertFalse(someTarget.isEmpty());
-
         LinkedListDeque<Integer> target = new LinkedListDeque<Integer>();
         assertTrue(target.isEmpty());
         assertEquals(null, target.get(500));
@@ -35,7 +32,7 @@ public class LinkedListDequeUnitTest {
         target.addFirst(1);
         target.addFirst(2);
         target.addFirst(3);
-        assertEquals(Integer.valueOf(1), target.get(2));   
+        assertEquals(Integer.valueOf(1), target.get(2));
     }
 
     @Test
@@ -44,7 +41,7 @@ public class LinkedListDequeUnitTest {
         target.addLast(1);
         target.addLast(2);
         target.addLast(3);
-        assertEquals(Integer.valueOf(3), target.get(2));   
+        assertEquals(Integer.valueOf(3), target.get(2));
     }
 
     @Test
@@ -68,7 +65,7 @@ public class LinkedListDequeUnitTest {
         assertEquals(0, target.size());
     }
 
-    @Test 
+    @Test
     public void testRemoveFirst() {
         LinkedListDeque<Integer> target = new LinkedListDeque<Integer>();
         target.addFirst(2026);
@@ -77,7 +74,7 @@ public class LinkedListDequeUnitTest {
         assertEquals(Integer.valueOf(2026), target.removeFirst());
     }
 
-    @Test 
+    @Test
     public void testRemoveLast() {
         LinkedListDeque<Integer> target = new LinkedListDeque<Integer>();
         target.addLast(2026);
@@ -112,7 +109,7 @@ public class LinkedListDequeUnitTest {
         assertEquals(Integer.valueOf(8), target.getRecursive(3));
     }
 
-    public static void main(String... args) {        
+    public static void main(String... args) {
         jh61b.junit.TestRunner.runTests("all", LinkedListDequeUnitTest.class);
     }
 }

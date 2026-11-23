@@ -1,16 +1,16 @@
 public class LinkedListDeque<T> {
     private class LinkNode {
-        public T value;
-        public LinkNode prev;
-        public LinkNode next;
+        private T value;
+        private LinkNode prev;
+        private LinkNode next;
 
-        public LinkNode(T v, LinkNode p, LinkNode n) {
+        private LinkNode(T v, LinkNode p, LinkNode n) {
             this.value = v;
             this.prev = p;
             this.next = n;
         }
 
-        public LinkNode elemAt(int index) {
+        private LinkNode elemAt(int index) {
             assert index >= 0;
             if (index == 0) {
                 return this;
@@ -28,13 +28,6 @@ public class LinkedListDeque<T> {
         this.sentinel.prev = this.sentinel;
         this.sentinel.next = this.sentinel;
         this.size = 0;
-    }
-
-    public LinkedListDeque(T item) {
-        this.sentinel = new LinkNode(null, null, null);
-        this.sentinel.next = new LinkNode(item, sentinel, sentinel);
-        this.sentinel.prev = this.sentinel.next;
-        this.size = 1;
     }
 
     public void addFirst(T item) {

@@ -54,26 +54,34 @@ public class ArrayDeque<T> {
     }
 
     public void printDeque() {
-        for (int i = 0;i < this.size;i++) {
+        for (int i = 0; i < this.size; i++) {
             System.out.print(this.get(i));
             System.out.print(" ");
         }
     }
 
     public T removeFirst() {
-        T result = this.items[Math.floorMod(this.nextFirst + 1, this.items.length)];
-        this.nextFirst = Math.floorMod(this.nextFirst + 1, this.items.length);
-        this.items[nextFirst] = null;
-        this.decreaseSize();
-        return result;
+        if (this.isEmpty()) {
+            return null;
+        } else {
+            T result = this.items[Math.floorMod(this.nextFirst + 1, this.items.length)];
+            this.nextFirst = Math.floorMod(this.nextFirst + 1, this.items.length);
+            this.items[nextFirst] = null;
+            this.decreaseSize();
+            return result;
+        }
     }
 
     public T removeLast() {
-        T result = this.items[Math.floorMod(this.nextLast - 1, this.items.length)];
-        this.nextLast = Math.floorMod(this.nextLast - 1, this.items.length);
-        this.items[nextLast] = null;
-        this.decreaseSize();
-        return result;
+        if (this.isEmpty()) {
+            return null;
+        } else {
+            T result = this.items[Math.floorMod(this.nextLast - 1, this.items.length)];
+            this.nextLast = Math.floorMod(this.nextLast - 1, this.items.length);
+            this.items[nextLast] = null;
+            this.decreaseSize();
+            return result;
+        }
     }
 
     public T get(int index) {
@@ -84,9 +92,9 @@ public class ArrayDeque<T> {
         }
     }
 
-    public T[] toArray() {
+    private T[] toArray() {
         T[] result = (T[]) new Object[this.size];
-        for (int i = 0;i < this.size;i++) {
+        for (int i = 0; i < this.size; i++) {
             result[i] = this.get(i);
         }
         return result;
