@@ -1,0 +1,6 @@
+{
+    "java.project.referencedLibraries": [
+        "../library-sp18/javalib/*.jar"
+    ],
+    "java.debug.settings.forceBuildBeforeLaunch": false
+}
