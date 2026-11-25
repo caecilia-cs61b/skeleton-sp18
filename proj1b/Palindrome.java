@@ -24,12 +24,8 @@ public class Palindrome {
         }
     }
 
-    private boolean isPalindrome(Deque<Character> deque) {
-        return isPalindrome(deque, new CharacterEquals());
-    }
-
     public boolean isPalindrome(String word) {
-        return isPalindrome(wordToDeque(word));
+        return isPalindrome(wordToDeque(word), new CharacterEquals());
     }
 
     public boolean isPalindrome(String word, CharacterComparator cc) {

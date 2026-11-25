@@ -11,8 +11,12 @@ public class PalindromeFinder {
         int off;
         try {
             off = Integer.parseInt(args[0]);
-        } catch (Exception e) {
+        } catch (ArrayIndexOutOfBoundsException e1) {
             off = 0;
+        } catch (NumberFormatException e2) {
+            off = 0;
+            System.out.println("Usage: PalindromeFinder [N]");
+            System.out.println("The optional parameter `N` must be an integer. Continue with the default value of 0...");
         }
         CharacterComparator offByN = new OffByN(off);
 
